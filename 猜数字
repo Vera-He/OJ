@@ -11,14 +11,15 @@ int main(){
 	int num[3]={0}, guess[3]={0};
 	char play;
 	bool flag;
-	srand(time(NULL));
 	
 	while (true){
 		
 		cout << "Do you want to play game (Y/N）？";
 		cin >> play;
-		if ( play != 'N' && play != 'Y' ) continue; 
+		if ( play != 'N' && play != 'Y' ) { cin.sync(); continue;} 
 		else if ( play == 'N') break;
+		
+		srand(time(NULL));
 		num[0] = num[1] = num[2] = 0;                                        //初始化，将判断是否猜对的标志改为false 
 		flag = 0; 
 			
@@ -30,8 +31,9 @@ int main(){
 		
 		for ( i = 1; i <= 7; ++i){
 			
-			cout << "Please type in your guess: " << endl;
+			cout << "Please type in your guess: " << endl;                   //用户输入，输入后清空cin,便于用户之后游戏进行 
 			cin >> guess[0] >> guess[1] >> guess[2];
+			cin.sync();                                                      
 		    if ( cin.fail() ){                                             
 		    	cout<<"Your input is invalid, please try again: "<<endl;     //判断输入类型是否符合，如果不符合清空输入流重新输入 
 				cin.clear();
@@ -39,12 +41,11 @@ int main(){
 				--i;
 				continue;
 			}
+			 
 			matchA = matchB = 0;                                             // 初始化 matchA，matchB分别表示完全准确和位置不对的数字个数 
-			
 			matchA = ( num[0] == guess[0] ) + ( num[1] == guess[1] ) + ( num[2] == guess[2] );
 			if ( matchA == 3 ) { flag = 1; ++win; break; }
-			
-	        matchB = ( num[0] == guess[1] ) + ( num[0] == guess[2] ) + ( num[1] == guess[0] ) 
+		    matchB = ( num[0] == guess[1] ) + ( num[0] == guess[2] ) + ( num[1] == guess[0] ) 
 			  + ( num[1] == guess[2] ) + ( num[2] == guess[0] ) + ( num[2] == guess[1] );
 			
 			cout << matchA << "A" << matchB << "B"<<endl;
