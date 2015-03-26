@@ -6,18 +6,20 @@ using namespace std;
 
 int main(){
 	
-	int win=0, fail = 0, i, j, k, num[3]={0}, guess[3]={0}, matchA, matchB;
+	int win=0, fail = 0, matchA, matchB;
+	int i, j, k;
+	int num[3]={0}, guess[3]={0};
 	char play;
 	bool flag;
 	srand(time(NULL));
 	
 	while (true){
 		
-		cout << "需要玩游戏吗（Y/N）？";
+		cout << "Do you want to play game (Y/N）？";
 		cin >> play;
 		if ( play != 'N' && play != 'Y' ) continue; 
 		else if ( play == 'N') break;
-		num[0] = num[1] = num[2] = 0;            //初始化，将判断是否猜对的标志改为false 
+		num[0] = num[1] = num[2] = 0;                                        //初始化，将判断是否猜对的标志改为false 
 		flag = 0; 
 			
 		while ( num[0] == num[1] || num[0] == num[2] || num[1] == num[2] ){  //生成3个不同的随机数（0~9） 
@@ -28,17 +30,16 @@ int main(){
 		
 		for ( i = 1; i <= 7; ++i){
 			
-			cout << "请输入你猜测的数字" << endl;
+			cout << "Please type in your guess: " << endl;
 			cin >> guess[0] >> guess[1] >> guess[2];
-		    if ( cin.fail() ){
-		    	cout<<"你的输入有误，请重新输入"; 
+		    if ( cin.fail() ){                                             
+		    	cout<<"Your input is invalid, please try again: "<<endl;     //判断输入类型是否符合，如果不符合清空输入流重新输入 
 				cin.clear();
 				cin.sync(); 
 				--i;
 				continue;
 			}
-			cout<<guess[0]<<guess[1]<<guess[2];
-			matchA = matchB = 0;                   // 初始化 matchA，matchB分别表示完全准确和位置不对的数字个数 
+			matchA = matchB = 0;                                             // 初始化 matchA，matchB分别表示完全准确和位置不对的数字个数 
 			
 			matchA = ( num[0] == guess[0] ) + ( num[1] == guess[1] ) + ( num[2] == guess[2] );
 			if ( matchA == 3 ) { flag = 1; ++win; break; }
@@ -46,16 +47,17 @@ int main(){
 	        matchB = ( num[0] == guess[1] ) + ( num[0] == guess[2] ) + ( num[1] == guess[0] ) 
 			  + ( num[1] == guess[2] ) + ( num[2] == guess[0] ) + ( num[2] == guess[1] );
 			
-			cout << matchA << "A" << matchB << "B";
+			cout << matchA << "A" << matchB << "B"<<endl;
 		}
 		
-		if ( flag == 1 )  cout << "恭喜，你答对了！"; 
+		if ( flag == 1 )  cout << "Congratulations！ You guessed it. "<<endl; 
 		else { 
 		    ++fail; 
-			cout << "很遗憾，你没有在规定次数内猜对。答案是" << num[0] << num[1] << num[2];	
+			cout << " I'm sorry, you haven't figure out the number in time. The answer is: " 
+			  << num[0] << num[1] << num[2]<<endl;	
 		}
 	}
-	cout << "你一共玩了<< win+fail << "局，赢了" << win << "局，输了" << fail << "局"; 
+	cout << "You have played " << win+fail << "games，won" << win << "round(s)，failed" << fail << "round(s）."<<endl; 
 	
 	return 0;	
 }
