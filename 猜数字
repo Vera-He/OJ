@@ -1,3 +1,5 @@
+//File:GuessNumber.cpp  
+//Guess the number 
 
 #include <iostream>
 #include <ctime>
@@ -6,9 +8,9 @@ using namespace std;
 
 int main(){
 	
-	int win=0, fail = 0, matchA, matchB;
+	int win = 0, fail = 0, matchA, matchB;
 	int i, j, k;
-	int num[3]={0}, guess[3]={0};
+	int num[3] = {0}, guess[3] = {0};
 	char play;
 	bool flag;
 	
@@ -16,8 +18,8 @@ int main(){
 		
 		cout << "Do you want to play game (Y/N）？";
 		cin >> play;
-		if ( play != 'N' && play != 'Y' ) { cin.sync(); continue;} 
-		else if ( play == 'N') break;
+		if ( play != 'N' && play != 'Y' )  { cin.sync();  continue; } 
+		else if ( play == 'N')  break;
 		
 		srand(time(NULL));
 		num[0] = num[1] = num[2] = 0;                                        //初始化，将判断是否猜对的标志改为false 
@@ -35,7 +37,7 @@ int main(){
 			cin >> guess[0] >> guess[1] >> guess[2];
 			cin.sync();                                                      
 		    if ( cin.fail() ){                                             
-		    	cout<<"Your input is invalid, please try again: "<<endl;     //判断输入类型是否符合，如果不符合清空输入流重新输入 
+		    	cout << "Your input is invalid, please try again: " << endl;     //判断输入类型是否符合，如果不符合清空输入流重新输入 
 				cin.clear();
 				cin.sync(); 
 				--i;
@@ -48,17 +50,17 @@ int main(){
 		    matchB = ( num[0] == guess[1] ) + ( num[0] == guess[2] ) + ( num[1] == guess[0] ) 
 			  + ( num[1] == guess[2] ) + ( num[2] == guess[0] ) + ( num[2] == guess[1] );
 			
-			cout << matchA << "A" << matchB << "B"<<endl;
+			cout << matchA << "A" << matchB << "B" << endl;
 		}
 		
-		if ( flag == 1 )  cout << "Congratulations！ You guessed it. "<<endl; 
+		if ( flag == 1 )  cout << "Congratulations！ You guessed it. " << endl; 
 		else { 
 		    ++fail; 
 			cout << " I'm sorry, you haven't figure out the number in time. The answer is: " 
-			  << num[0] << num[1] << num[2]<<endl;	
+			  << num[0] << num[1] << num[2] << endl;	
 		}
 	}
-	cout << "You have played " << win+fail << "games，won" << win << "round(s)，failed" << fail << "round(s）."<<endl; 
+	cout << "You have played " << win+fail << "games，won" << win << "round(s)，failed" << fail << "round(s）." << endl; 
 	
 	return 0;	
 }
