@@ -19,7 +19,7 @@ int main(){
 	
 	while ( true ){
 		
-		cout << "\nDo you want to play game (y/n£©?";
+		cout << "\nDo you want to play game (y/n) ?";
 		if ( inputAndCheck() == 'n')  break;
 		for ( i = 0; i < 52; ++i ) playcards[i] = 0;
 		player[0] = computer[0] = player[1] = computer[1] = flag = 0;
@@ -30,7 +30,7 @@ int main(){
 		
 		while ( true ){
 			
-			cout << "\nDo you want another card (y/n£©?";
+			cout << "\nDo you want another card (y/n) ?";
 		    if ( inputAndCheck() == 'n')  break;
 			
 			cout << "One more card: ";
