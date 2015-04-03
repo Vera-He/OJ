@@ -5,6 +5,7 @@
 #include <ctime>
 #include <cstdlib>
 using namespace std;
+
 char inputAndCheck();
 void giveCard( int playcards[52], int handcards[20], int count[2], int amount = 1 );
 void printCards( int handcards[20], int cards_num );
@@ -19,7 +20,7 @@ int main(){
 	
 	while ( true ){
 		
-		cout << "\nDo you want to play game (y/n£©?";
+		cout << "\nDo you want to play game (y/n) ?";
 		if ( inputAndCheck() == 'n')  break;
 		for ( i = 0; i < 52; ++i ) playcards[i] = 0;
 		player[0] = computer[0] = player[1] = computer[1] = flag = 0;
@@ -30,7 +31,7 @@ int main(){
 		
 		while ( true ){
 			
-			cout << "\nDo you want another card (y/n£©?";
+			cout << "\nDo you want another card (y/n) ?";
 		    if ( inputAndCheck() == 'n')  break;
 			
 			cout << "One more card: ";
